@@ -20,6 +20,17 @@ UI: HTML5 Canvas for the drum visualization and a simple DOM-based "Flexowriter"
 
 [ ] Timing: Simulate the 120-millisecond rotation speed and the bit-by-bit shift process.
 
+Memory: Magnetic Drum
+Total Capacity: 4,096 words.
+
+Geometry: 64 Tracks (0–63) by 64 Sectors (0–63).
+
+Word Size: 32 bits per sector (word).
+
+Addressing: 12-bit address space where the high 6 bits indicate the Track and the low 6 bits indicate the Sector.
+
+Serial Access: Simulate a "read head" position that increments per clock tick; a word is only accessible when the drum rotation matches the requested sector.
+
 4. Technical Constraints
 Word Format: 32 bits per word. Bit 0 (leftmost) is the sign bit; bits 1-15 are the value/instruction; bits 16-31 are the address.
 
@@ -54,3 +65,41 @@ class Register {
     }
 }
 ```
+
+The "Vanilla JS" Implementation Logic
+When we translate this to code, we shouldn't just use a flat array of 4,096 elements if we want true bit-serial emulation. We need to account for the interleave and the rotation delay.
+
+Here is how I would structure that "Drum" in your lgp30.js file:
+
+JavaScript
+
+```javascript
+class MagneticDrum {
+    constructor() {
+        // 64 tracks * 64 sectors = 4096 words
+        // Using Int32Array to represent 32-bit words cleanly
+        this.storage = new Int32Array(4096);
+        
+        this.currentSector = 0; // The sector currently under the read head
+        this.totalSectors = 64;
+    }
+
+    // Simulate the physical rotation of the drum
+    tick() {
+        this.currentSector = (this.currentSector + 1) % this.totalSectors;
+    }
+
+    // In a bit-serial machine, you wait for the drum to reach the right spot
+    isSectorReady(address) {
+        const targetSector = address & 0x3F; // Low 6 bits
+        return this.currentSector === targetSector;
+    }
+}
+```
+
+Why specify it this way?
+Bit-Serial Timing: By defining the 64 sectors, we can simulate the "latency." The CPU has to wait for the drum to spin to the correct sector before it can read the 32 bits.
+
+Addressing: Using the 64x64 split allows us to implement the Track (physical location) and Sector (timing/offset) logic exactly like the 1956 hardware.
+
+Would you like me to write the Clock logic that synchronizes this Drum rotation with the CPU's instruction cycle?
