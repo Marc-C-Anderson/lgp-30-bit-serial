@@ -1,0 +1,17 @@
+{
+  "name": "lgp-30-bit-serial",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marc-C-Anderson/lgp-30-bit-serial.git"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "Unlicense",
+  "packageManager": "pnpm@10.28.2"
+}
