@@ -101,5 +101,3 @@ Why specify it this way?
 Bit-Serial Timing: By defining the 64 sectors, we can simulate the "latency." The CPU has to wait for the drum to spin to the correct sector before it can read the 32 bits.
 
 Addressing: Using the 64x64 split allows us to implement the Track (physical location) and Sector (timing/offset) logic exactly like the 1956 hardware.
-
-Would you like me to write the Clock logic that synchronizes this Drum rotation with the CPU's instruction cycle?
