@@ -1,8 +1,3 @@
-Excellent. While the **Tech Stack** file covers the "tools," the **Styles** file covers the "handwriting." This ensures the code I write looks exactly like the code you would write—consistent, clean, and predictable.
-
-Here is a template for your `.ai/rules/styles.md`.
-
----
 
 ## .ai/rules/styles.md
 
@@ -39,13 +34,3 @@ Here is a template for your `.ai/rules/styles.md`.
 
 * **File Extensions:** Always include the `.js` extension in your `import` statements (e.g., `import { helper } from './utils.js'`). This is required for native Node.js ESM support.
 * **Named Exports:** Prefer **Named Exports** (`export const x = ...`) over Default Exports. It makes refactoring and IDE auto-imports much more reliable.
-
----
-
-### How to Implement This
-
-Save this content into `.ai/rules/styles.md`.
-
-From now on, I will act as a **Linter-in-Chief**. If you ask me to review code, I’ll check it against these specific rules. If I generate code, I will use these naming and structural conventions automatically.
-
-**Since we have the "Rules" and the "Style" set up, would you like me to create a `roadmap.md` template so we can start tracking your project's progress?**

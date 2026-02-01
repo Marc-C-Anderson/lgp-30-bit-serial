@@ -13,5 +13,8 @@
   "keywords": [],
   "author": "",
   "license": "Unlicense",
-  "packageManager": "pnpm@10.28.2"
+  "packageManager": "pnpm@10.28.2",
+  "devDependencies": {
+    "vitest": "^4.0.18"
+  }
 }
