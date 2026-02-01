@@ -8,6 +8,8 @@
     "url": "git+https://github.com/Marc-C-Anderson/lgp-30-bit-serial.git"
   },
   "scripts": {
+    "format": "prettier . --write",
+    "format:check": "prettier . --check",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "keywords": [],
@@ -15,6 +17,7 @@
   "license": "Unlicense",
   "packageManager": "pnpm@10.28.2",
   "devDependencies": {
+    "prettier": "^3.8.1",
     "vitest": "^4.0.18"
   }
 }
